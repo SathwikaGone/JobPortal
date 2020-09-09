@@ -7,8 +7,7 @@ export default function Header() {
   return (
     <nav id="nav">
       <div className="logo">
-        <span className="logostyle">r</span>ecruit
-        <span className="logostyle"> m</span>e
+        e<span className="logostyle">L</span>earning
       </div>
       <span className="moveLeft">Categories </span>
       <div className="searchDiv">
