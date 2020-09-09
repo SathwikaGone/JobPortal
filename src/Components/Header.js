@@ -10,6 +10,7 @@ export default function Header() {
         e<span className="logostyle">L</span>earning
       </div>
       <span className="moveLeft">Categories </span>
+
       <div className="searchDiv">
         <BsSearch className="icon" />
         <input

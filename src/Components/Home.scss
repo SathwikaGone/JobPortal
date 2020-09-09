@@ -1,8 +1,18 @@
 .displayImage {
   width: 50%;
+  animation: fadeIn 5s;
 }
 .HomeDiv {
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -1,0 +1,25 @@
+.footerClass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .logo {
+    text-transform: uppercase;
+    margin: 0.5em;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-style: italic;
+  }
+  .logostyle {
+    font-style: italic;
+    font-size: 2em;
+    color: cadetblue;
+  }
+
+  //   .para {
+  // align-items: center;
+  // justify-content: center;
+  //   }
+}
