@@ -1,10 +1,10 @@
 import React from "react";
-
-export default function Checkbox({ name, id }) {
+import "./Filter.scss";
+export default function Checkbox({ name, id, displayname }) {
   return (
-    <React.Fragment>
-      <input type="checkbox" id={id} name={name} />
-      <label for={name}>{name}</label>
-    </React.Fragment>
+    <label for={name} className="displayBlock">
+      <input className="displayInput" type="checkbox" id={id} name={name} />
+      {displayname}
+    </label>
   );
 }

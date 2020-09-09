@@ -19,11 +19,11 @@ export default function Category() {
         <section className="sectionClass">
           <CourseCard
             pp=""
-            courseName="dddd"
-            shortDescription="ddddddddddddddd"
-            hours="1212"
-            level="hh"
-            price="22"
+            courseName="courseName"
+            shortDescription="Description"
+            hours="hours"
+            level="intermideate"
+            price="22$"
           />
         </section>
       </div>
