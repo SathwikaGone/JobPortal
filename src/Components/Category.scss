@@ -1,7 +1,7 @@
 .displayCategory {
   display: flex;
   flex-direction: row;
-  margin: 0 5em 0 5em;
+  margin-top: 5%;
 }
 
 .asideClass {
@@ -11,4 +11,36 @@
 .sectionClass {
   width: 80%;
   //   background-color: aqua;
+}
+.otherclass {
+  width: 100%;
+}
+
+.headerName {
+  margin-top: 7px;
+}
+
+.dispCat {
+  display: block;
+}
+
+.display {
+  margin: 0 7em 0 7em;
+}
+
+.right {
+  float: right;
+}
+
+.lft {
+  float: left;
+  border-radius: 7px;
+  background-color: white;
+  color: cadetblue;
+  border-color: cadetblue;
+}
+
+.lft:hover {
+  border-color: #1c6a78;
+  color: #094c59;
 }

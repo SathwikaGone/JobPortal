@@ -6,7 +6,7 @@ export default function AppFooter() {
       <div className="logo">
         e<span className="logostyle">L</span>earning
       </div>
-      <p className="para">&#169; 2020 eLearning, Inc.</p>
+      <p>&#169; 2020 eLearning, Inc.</p>
     </div>
   );
 }

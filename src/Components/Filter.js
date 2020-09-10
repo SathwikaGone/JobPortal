@@ -12,14 +12,15 @@ export default function Filter() {
 
   return (
     <div>
-      <h5
+      <p
+        className="makeH5"
         onClick={() => setopenVideo(!openVideo)}
         aria-controls="example-collapse-text"
         aria-expanded={openVideo}
       >
         Video Duration
-        <AiOutlineDown size={18} />
-      </h5>
+        <AiOutlineDown size={18} className="moveRight" />
+      </p>
       <Collapse in={openVideo}>
         <div id="example-collapse-text">
           <Checkbox id="small" name="lessthanfive" displayname="0-5 Hours" />
@@ -28,14 +29,15 @@ export default function Filter() {
         </div>
       </Collapse>
 
-      <h5
+      <p
+        className="makeH5"
         onClick={() => setopenLevel(!openLevel)}
         aria-controls="example-collapse-text"
         aria-expanded={openLevel}
       >
         Level
-        <AiOutlineDown size={18} />
-      </h5>
+        <AiOutlineDown size={18} className="moveRight" />
+      </p>
       <Collapse in={openLevel}>
         <div id="example-collapse-text">
           <Checkbox id="beginner" name="beginner" displayname="Beginner" />
@@ -48,14 +50,15 @@ export default function Filter() {
         </div>
       </Collapse>
 
-      <h5
+      <p
+        className="makeH5"
         onClick={() => setopenCost(!openCost)}
         aria-controls="example-collapse-text"
         aria-expanded={openCost}
       >
         Price
-        <AiOutlineDown size={18} />
-      </h5>
+        <AiOutlineDown size={18} className="moveRight" />
+      </p>
       <Collapse in={openCost}>
         <div id="example-collapse-text">
           <Checkbox id="paid" name="paid" displayname="Paid" />
