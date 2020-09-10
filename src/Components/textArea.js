@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function textArea({ name, id, type, displayname, onChange }) {
+function TextArea({ name, id, type, displayname, onChange }) {
   return (
-    <label for={name} className="displayBlock">
-      {displayname}
-      <textArea
-        className="displayInput"
-        type={type}
+    <label htmlFor={name} className="displayBlock">
+      <span className="spanWidth"> {displayname} </span>
+      <input
+        className="displayTextArea"
+        type="textarea"
         id={id}
         name={name}
         onChange={(e) => onChange(e.target.value)}
@@ -14,3 +14,5 @@ export default function textArea({ name, id, type, displayname, onChange }) {
     </label>
   );
 }
+
+export default React.memo(TextArea);

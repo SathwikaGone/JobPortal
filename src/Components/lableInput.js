@@ -1,10 +1,10 @@
 import React from "react";
 import "./Filter.scss";
 
-export default function lableInput({ name, id, type, displayname, onChange }) {
+function lableInput({ name, id, type, displayname, onChange }) {
   return (
-    <label for={name} className="displayBlock">
-      {displayname}
+    <label htmlFor={name} className="displayLable">
+      <span className="spanWidth"> {displayname}</span>
       <input
         className="displayInput"
         type={type}
@@ -15,3 +15,5 @@ export default function lableInput({ name, id, type, displayname, onChange }) {
     </label>
   );
 }
+
+export default React.memo(lableInput);

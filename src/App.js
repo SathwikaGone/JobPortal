@@ -10,9 +10,12 @@ function App() {
     <React.Fragment>
       <Header />
       {/** <Home />      */}
-      <Category />
-      {/**  <AddCourse />*/}
-      <Footer />
+
+      {/** <Category />  */}
+      <AddCourse />
+      <div className="position">
+        <Footer />
+      </div>
     </React.Fragment>
   );
 }
