@@ -11,8 +11,8 @@ function App() {
       <Header />
       {/** <Home />      */}
 
-      {/** <Category />  */}
-      <AddCourse />
+      {/**   <AddCourse /> */}
+      <Category />
       <div className="position">
         <Footer />
       </div>
