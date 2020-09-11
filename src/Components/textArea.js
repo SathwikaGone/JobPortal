@@ -1,6 +1,7 @@
 import React from "react";
 
 function TextArea({ name, id, type, displayname, onChange }) {
+  // console.log("textarea", displayname);
   return (
     <label htmlFor={name} className="displayBlock">
       <span className="spanWidth"> {displayname} </span>

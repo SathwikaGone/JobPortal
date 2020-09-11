@@ -2,6 +2,8 @@ import React from "react";
 import "./Filter.scss";
 
 function lableInput({ name, id, type, displayname, onChange }) {
+  // console.log("input", displayname);
+
   return (
     <label htmlFor={name} className="displayLable">
       <span className="spanWidth"> {displayname}</span>

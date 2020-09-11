@@ -8,13 +8,13 @@ export default function AddCourse() {
   const [details, setdetails] = useState({
     courseName: "",
     description: "",
-    catogery: "",
-    level: "",
+    category: "Java",
+    level: "Beginner",
     createdBy: "",
     toLearn: "",
-    Requirements: "",
-    access: "",
-    certification: "",
+    requirments: "",
+    access: "1 Month",
+    certification: "Yes",
     duration: 0,
     price: 0,
   });
@@ -34,6 +34,45 @@ export default function AddCourse() {
     { displayValue: "Expert" },
   ];
 
+  // console.log("det", details);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const body = {
+      query: `mutation{
+    addCourse(Course: {
+      courseName:"${details.courseName}",
+      description:" ${details.description}",
+      category:"${details.category}",
+      level:" ${details.level}",
+      createdBy: "${details.createdBy}",
+      toLearn: "${details.toLearn}",
+      requirments:" ${details.requirments}",
+      access: "${details.access}",
+      certification : "${details.certification}",
+      duration: ${details.duration},
+      price: ${details.price},
+    } ){
+      courseName
+      category
+    }
+  }`,
+    };
+
+    console.log("det", body.toString());
+
+    try {
+      const data = await fetch("http://localhost:5000/api/", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("data", data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="displayBlock">
       <div className="formLayout">
@@ -45,14 +84,16 @@ export default function AddCourse() {
             id="courseName"
             type="text"
             displayname="Course Name"
-            onChange={(value) => setdetails({ ...details, courseName: value })}
+            onChange={(value, name) =>
+              setdetails({ ...details, courseName: value })
+            }
           />
 
           <SelectOptions
-            displayname="Catogery"
+            displayname="Category"
             list={catg}
-            onChange={(value) => setdetails({ ...details, catogery: value })}
-            value={details.catogery}
+            onChange={(value) => setdetails({ ...details, category: value })}
+            value={details.category}
           />
 
           <SelectOptions
@@ -73,9 +114,11 @@ export default function AddCourse() {
           <LableInput
             name="price"
             id="price"
-            type="price"
+            type="number"
             displayname="Price"
-            onChange={(value) => setdetails({ ...details, price: value })}
+            onChange={(value) =>
+              setdetails({ ...details, price: Number(value) })
+            }
           />
 
           <SelectOptions
@@ -106,28 +149,32 @@ export default function AddCourse() {
             id="Requirements"
             type="text"
             displayname="Requirements"
-            onChange={(value) =>
-              setdetails({ ...details, Requirements: value })
-            }
+            onChange={(value) => setdetails({ ...details, requirments: value })}
           />
 
           <LableInput
             name="duration"
             id="duration"
-            type="duration"
+            type="number"
             displayname="Duration"
-            onChange={(value) => setdetails({ ...details, duration: value })}
+            onChange={(value) =>
+              setdetails({ ...details, duration: Number(value) })
+            }
           />
 
           <LableInput
             name="createdBy"
             id="createdBy"
-            type="createdBy"
+            type="text"
             displayname="Created By"
             onChange={(value) => setdetails({ ...details, createdBy: value })}
           />
 
-          <button type="submit">submit</button>
+          <div className="buttonRight">
+            <button type="submit" onClick={handleSubmit} className="button">
+              submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
