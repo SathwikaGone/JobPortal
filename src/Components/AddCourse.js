@@ -3,17 +3,18 @@ import LableInput from "./lableInput";
 import SelectOptions from "./selectOptions";
 import TextArea from "./textArea";
 import "./AddCourse.scss";
+
 export default function AddCourse() {
   const [details, setdetails] = useState({
     courseName: "",
     description: "",
-    catogery: "",
-    level: "",
+    category: "Java",
+    level: "Beginner",
     createdBy: "",
     toLearn: "",
-    Requirements: "",
-    access: "",
-    certification: "",
+    requirments: "",
+    access: "1 Month",
+    certification: "Yes",
     duration: 0,
     price: 0,
   });
@@ -33,98 +34,147 @@ export default function AddCourse() {
     { displayValue: "Expert" },
   ];
 
-  console.log("details", details);
+  // console.log("det", details);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const body = {
+      query: `mutation{
+    addCourse(Course: {
+      courseName:"${details.courseName}",
+      description:" ${details.description}",
+      category:"${details.category}",
+      level:" ${details.level}",
+      createdBy: "${details.createdBy}",
+      toLearn: "${details.toLearn}",
+      requirments:" ${details.requirments}",
+      access: "${details.access}",
+      certification : "${details.certification}",
+      duration: ${details.duration},
+      price: ${details.price},
+    } ){
+      courseName
+      category
+    }
+  }`,
+    };
+
+    console.log("det", body.toString());
+
+    try {
+      const data = await fetch("http://localhost:5000/api/", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("data", data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div>
+    <div className="displayBlock">
       <div className="formLayout">
         <form>
           <h3>Add Course</h3>
-
+          <p>Let us the know the course details</p>
           <LableInput
             name="courseName"
             id="courseName"
             type="text"
-            displayname="courseName"
-            onChange={(value) => setdetails({ ...details, courseName: value })}
+            displayname="Course Name"
+            onChange={(value, name) =>
+              setdetails({ ...details, courseName: value })
+            }
+          />
+
+          <SelectOptions
+            displayname="Category"
+            list={catg}
+            onChange={(value) => setdetails({ ...details, category: value })}
+            value={details.category}
+          />
+
+          <SelectOptions
+            displayname="Level"
+            list={level}
+            onChange={(value) => setdetails({ ...details, level: value })}
+            value={details.level}
           />
 
           <TextArea
             name="description"
             id="description"
             type="text"
-            displayname="description"
+            displayname="Description"
             onChange={(value) => setdetails({ ...details, description: value })}
           />
 
-          <SelectOptions
-            displayname="catogery"
-            list={catg}
-            onChange={(value) => setdetails({ ...details, catogery: value })}
-            value={details.catogery}
-          />
-
-          <SelectOptions
-            displayname="level"
-            list={level}
-            onChange={(value) => setdetails({ ...details, level: value })}
-            value={details.level}
-          />
-
           <LableInput
-            name="createdBy"
-            id="createdBy"
-            type="createdBy"
-            displayname="createdBy"
-            onChange={(value) => setdetails({ ...details, createdBy: value })}
-          />
-          <LableInput
-            name="toLearn"
-            id="toLearn"
-            type="toLearn"
-            displayname="toLearn"
-            onChange={(value) => setdetails({ ...details, toLearn: value })}
-          />
-          <LableInput
-            name="Requirements"
-            id="Requirements"
-            type="Requirements"
-            displayname="Requirements"
+            name="price"
+            id="price"
+            type="number"
+            displayname="Price"
             onChange={(value) =>
-              setdetails({ ...details, Requirements: value })
+              setdetails({ ...details, price: Number(value) })
             }
           />
-          <LableInput
-            name="access"
-            id="access"
-            type="access"
-            displayname="access"
+
+          <SelectOptions
+            displayname="Access"
+            list={[{ displayValue: "1 Month" }, { displayValue: "Life Time" }]}
             onChange={(value) => setdetails({ ...details, access: value })}
+            value={details.access}
           />
 
           <SelectOptions
-            displayname="certification"
+            displayname="Certification"
             list={[{ displayValue: "Yes" }, { displayValue: "No" }]}
             onChange={(value) =>
               setdetails({ ...details, certification: value })
             }
             value={details.certification}
           />
+
+          <TextArea
+            name="toLearn"
+            id="toLearn"
+            type="text"
+            displayname="To Learn"
+            onChange={(value) => setdetails({ ...details, toLearn: value })}
+          />
+          <TextArea
+            name="Requirements"
+            id="Requirements"
+            type="text"
+            displayname="Requirements"
+            onChange={(value) => setdetails({ ...details, requirments: value })}
+          />
+
           <LableInput
             name="duration"
             id="duration"
-            type="duration"
-            displayname="duration"
-            onChange={(value) => setdetails({ ...details, duration: value })}
+            type="number"
+            displayname="Duration"
+            onChange={(value) =>
+              setdetails({ ...details, duration: Number(value) })
+            }
           />
+
           <LableInput
-            name="price"
-            id="price"
-            type="price"
-            displayname="price"
-            onChange={(value) => setdetails({ ...details, price: value })}
+            name="createdBy"
+            id="createdBy"
+            type="text"
+            displayname="Created By"
+            onChange={(value) => setdetails({ ...details, createdBy: value })}
           />
-          <button type="submit">submit</button>
+
+          <div className="buttonRight">
+            <button type="submit" onClick={handleSubmit} className="button">
+              submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
