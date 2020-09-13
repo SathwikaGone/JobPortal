@@ -10,6 +10,12 @@
     font-weight: bold;
     font-size: 1.5em;
     font-style: italic;
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
   }
   .logostyle {
     font-style: italic;
@@ -33,5 +39,40 @@
   .icon {
     display: inline-flex;
     margin: 0.4em 0.5em auto 0.4em;
+  }
+
+  .btn-primary {
+    margin: 0.5em;
+    text-decoration: none;
+    color: rgb(51, 133, 136);
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: white;
+    // border-color: white;
+    border-style: hidden;
+  }
+  .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
+
+  .btn-primaryy {
+    margin: 0.5em;
+    text-decoration: none;
+    color: rgb(51, 133, 136);
+    // font-weight: bold;
+    text-transform: capitalize;
+    background-color: white;
+    display: block;
+  }
+
+  .btn-primary:focus {
+    border-color: white;
+    box-shadow: none;
   }
 }
