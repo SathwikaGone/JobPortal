@@ -7,6 +7,6 @@ const sagaMiddleware = createSagaMiddleware();
 
 let middleware = [sagaMiddleware];
 
-export default store = createStore(reducers, applyMiddleware(...middleware));
+export const store = createStore(reducers, applyMiddleware(...middleware));
 
 sagaMiddleware.run(rootSaga);

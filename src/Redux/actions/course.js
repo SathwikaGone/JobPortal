@@ -1,21 +1,22 @@
 import * as Types from "./types";
 
-export const add_course = (result) => {
+export const add_course = (details) => {
   return {
     type: Types.CREATE_COURSE,
-    result,
+    details,
   };
 };
 
-export const get_course = () => {
+export const get_course = (category) => {
   return {
     type: Types.GET_COURSE,
+    category,
   };
 };
 
-export const get_course_by_search = (result) => {
+export const get_course_by_search = (word) => {
   return {
     type: Types.GET_COURSE_BY_SEARCH,
-    result,
+    word,
   };
 };

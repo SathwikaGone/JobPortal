@@ -1,14 +1,15 @@
 import * as Type from "../actions/types";
 const initialUserObj = {
   result: [],
+  allCourse: [],
 };
 
 const handleCreateCourse = (state, action) => {
   let newState = { ...state };
   if (action.result !== undefined) {
-    let r = state.result;
-    r.push(action.result.data.addEmployee);
-    newState = Object.assign({}, state, { result: r });
+    newState = Object.assign({}, state, {
+      result: [...action.result.data.addEmployee],
+    });
   }
   return { ...newState };
 };
@@ -16,9 +17,19 @@ const handleCreateCourse = (state, action) => {
 const handleGetCourse = (state, action) => {
   let newState = { ...state };
   if (action.result.data !== undefined) {
-    let r = state.result;
-    r.push(action.result.data.allEmployees);
-    newState = Object.assign({}, state, { allCourse: r });
+    newState = Object.assign({}, state, {
+      allCourse: [...action.result.data.getCategory],
+    });
+  }
+  return { ...newState };
+};
+
+const handleGetCourseBySearch = (state, action) => {
+  let newState = { ...state };
+  if (action.result.data !== undefined) {
+    newState = Object.assign({}, state, {
+      allCourse: [...action.result.data.searchCards],
+    });
   }
   return { ...newState };
 };
@@ -42,7 +53,7 @@ export default (state = initialUserObj, action = {}) => {
     case Type.GET_COURSE_BY_SEARCH:
       return { ...state };
     case Type.GET_COURSE_BY_SEARCH_SERVER_RESPONSE_SUCCESS:
-      return handleGetCourse(state, action);
+      return handleGetCourseBySearch(state, action);
     case Type.GET_COURSE_BY_SEARCH_SERVER_RESPONSE_ERROR:
       return { ...state };
     default:

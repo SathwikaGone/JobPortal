@@ -3,10 +3,16 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
+import { connect } from "react-redux";
+import * as actions from "../Redux/actions/course";
 
-export default function Header() {
+function Header(props) {
   const [searchVal, setsearchVal] = useState("");
   const [Show, setShow] = useState(false);
+
+  const searchData = () => {
+    props.dispatch(actions.get_course_by_search(searchVal));
+  };
   return (
     <nav id="nav">
       <Link to="/">
@@ -86,7 +92,6 @@ export default function Header() {
         </Dropdown.Menu>
       </Dropdown>
       <div className="searchDiv">
-        <BsSearch className="icon" />
         <input
           className="inputSearch"
           name="search"
@@ -94,7 +99,13 @@ export default function Header() {
           placeholder="search for anything"
           onChange={(e) => setsearchVal(e.target.value)}
         />
+
+        <Link className="btn-primary " to="/Category">
+          <BsSearch className="icon" onClick={searchData} />
+        </Link>
       </div>
     </nav>
   );
 }
+
+export default connect()(Header);

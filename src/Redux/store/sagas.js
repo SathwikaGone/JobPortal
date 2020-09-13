@@ -1,11 +1,11 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import * as Types from "../actions/types";
-import { GetDataFromServer } from "../service";
+import { GetDataFromServer } from "../services/index";
 
 function* createCourse(action) {
   try {
-    let formBody = {};
-    formBody = action.result;
+    let details;
+    details = action.details;
     const loginUrl = "http://localhost:5000/api";
     const body = {
       query: `mutation{
@@ -49,9 +49,8 @@ function* createCourse(action) {
 
 function* getCourse(action) {
   try {
-    let formBody = {};
-    formBody = action.result;
-    const reqMethod = "POST";
+    let category;
+    category = action.category;
     const loginUrl = "http://localhost:5000/api";
     const body = {
       query: `query{
@@ -94,13 +93,13 @@ function* getCourse(action) {
 
 function* getCourseBySearch(action) {
   try {
-    let formBody = {};
-    formBody = action.result;
+    let word;
+    word = action.word;
     const reqMethod = "POST";
     const loginUrl = "http://localhost:5000/api";
     const body = {
       query: `query{
-            searchCards(word: "${value}"){
+            searchCards(word: "${word}"){
               courseName
               category
               level
@@ -127,7 +126,7 @@ function* getCourseBySearch(action) {
       });
     } else {
       yield put({
-        type: Types.GET_COURSE_DETAILS_SERVER_RESPONSE_SUCCESS,
+        type: Types.GET_COURSE_BY_SEARCH_SERVER_RESPONSE_SUCCESS,
         result,
       });
     }
