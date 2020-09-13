@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CourseCard from "./CourseCard";
 import Filter from "./Filter";
 import { FiFilter } from "react-icons/fi";
 import cx from "classnames";
 import "./Category.scss";
+import SearchContext from "./Header";
 
 export default function Category(props) {
   const category = props.location.param;
-  console.log("param", category);
+
   const [showFilter, setshowFilter] = useState(true);
   let filterClassnames = cx("sectionClass", "otherclass");
   const [fetchedData, setfetchedData] = useState([]);
   const [error, seterror] = useState("");
-
+  const value = "the";
   useEffect(() => {
-    const Formbody = {
-      query: `query{
+    const Formbody =
+      value === ""
+        ? {
+            query: `query{
         getCategory(category: "${category}"){
           courseName
           category
@@ -31,7 +34,26 @@ export default function Category(props) {
           date
         }
       }`,
-    };
+          }
+        : {
+            query: `query{
+        searchCards(word: "${value}"){
+          courseName
+          category
+          level
+          description
+          price
+          access
+          certification
+          toLearn
+          requirments
+          duration
+          createdBy
+          date
+        }
+      }`,
+          };
+
     const handleFetch = () => {
       fetch("http://localhost:5000/api/", {
         method: "POST",
@@ -48,9 +70,11 @@ export default function Category(props) {
   console.log("fetchdata", fetchedData);
   console.log("error", error);
 
+  // let filterData = fetchedData();
+
   return (
     <div className="display">
-      <h4 className="headerName">{category}</h4>
+      <h4 className="headerName">All {category} Courses</h4>
       <div className="dispCat">
         <button className="lft" onClick={() => setshowFilter(!showFilter)}>
           <FiFilter /> Filter
