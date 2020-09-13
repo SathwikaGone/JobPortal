@@ -4,11 +4,11 @@ import SelectOptions from "./selectOptions";
 import TextArea from "./textArea";
 import "./AddCourse.scss";
 
-export default function AddCourse() {
+export default function AddCourse(props) {
   const [details, setdetails] = useState({
     courseName: "",
     description: "",
-    category: "Java",
+    category: "Business",
     level: "Beginner",
     createdBy: "",
     toLearn: "",
@@ -20,12 +20,12 @@ export default function AddCourse() {
   });
 
   let catg = [
-    { displayValue: "Java" },
-    { displayValue: "SQL" },
-    { displayValue: "React.js" },
-    { displayValue: "GraphQl" },
-    { displayValue: "Node.js" },
-    { displayValue: "AWS" },
+    { displayValue: "Business" },
+    { displayValue: "IT" },
+    { displayValue: "Music" },
+    { displayValue: "Marketing" },
+    { displayValue: "Lifestyle" },
+    { displayValue: "Design" },
   ];
 
   let level = [
@@ -36,8 +36,9 @@ export default function AddCourse() {
 
   // console.log("det", details);
 
-  const handleSubmit = async (e) => {
+  const handleSubmitData = async (e) => {
     e.preventDefault();
+    console.log("details", details);
     const body = {
       query: `mutation{
     addCourse(Course: {
@@ -71,6 +72,8 @@ export default function AddCourse() {
     } catch (error) {
       console.log(error);
     }
+
+    props.history.push("/");
   };
 
   return (
@@ -170,13 +173,17 @@ export default function AddCourse() {
             onChange={(value) => setdetails({ ...details, createdBy: value })}
           />
 
-          <div className="buttonRight">
-            <button type="submit" onClick={handleSubmit} className="button">
-              submit
-            </button>
-          </div>
+          <button onClick={handleSubmitData} className="button">
+            submit
+          </button>
+          <div className="buttonRight"></div>
         </form>
       </div>
     </div>
   );
 }
+
+// onClick={() => {
+//   console.log("click");
+//  ;
+// }}
