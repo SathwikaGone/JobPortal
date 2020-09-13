@@ -3,8 +3,16 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
-export default function Header() {
+import { connect } from "react-redux";
+import * as actions from "../Redux/actions/course";
+
+function Header(props) {
   const [searchVal, setsearchVal] = useState("");
+  const [Show, setShow] = useState(false);
+
+  const searchData = () => {
+    props.dispatch(actions.get_course_by_search(searchVal));
+  };
   return (
     <nav id="nav">
       <Link to="/">
@@ -17,14 +25,17 @@ export default function Header() {
       </Link>
 
       <Dropdown>
-        <Dropdown.Toggle>Categories</Dropdown.Toggle>
-        <Dropdown.Menu>
+        <Dropdown.Toggle onClick={() => setShow(!Show)}>
+          Categories
+        </Dropdown.Toggle>
+        <Dropdown.Menu show={Show}>
           <Link
             className="btn-primaryy "
             to={{
               pathname: "/Category",
               param: "Business",
             }}
+            onClick={() => setShow(!Show)}
           >
             Business
           </Link>
@@ -34,6 +45,7 @@ export default function Header() {
               pathname: "/Category",
               param: "IT",
             }}
+            onClick={() => setShow(!Show)}
           >
             IT
           </Link>
@@ -43,6 +55,7 @@ export default function Header() {
               pathname: "/Category",
               param: "Music",
             }}
+            onClick={() => setShow(!Show)}
           >
             Music
           </Link>
@@ -52,6 +65,7 @@ export default function Header() {
               pathname: "/Category",
               param: "Marketing",
             }}
+            onClick={() => setShow(!Show)}
           >
             Marketing
           </Link>
@@ -61,6 +75,7 @@ export default function Header() {
               pathname: "/Category",
               param: "Lifestyle",
             }}
+            onClick={() => setShow(!Show)}
           >
             Lifestyle
           </Link>
@@ -70,13 +85,13 @@ export default function Header() {
               pathname: "/Category",
               param: "Design",
             }}
+            onClick={() => setShow(!Show)}
           >
             Design
           </Link>
         </Dropdown.Menu>
       </Dropdown>
       <div className="searchDiv">
-        <BsSearch className="icon" />
         <input
           className="inputSearch"
           name="search"
@@ -84,7 +99,13 @@ export default function Header() {
           placeholder="search for anything"
           onChange={(e) => setsearchVal(e.target.value)}
         />
+
+        <Link className="btn-primary " to="/Category">
+          <BsSearch className="icon" onClick={searchData} />
+        </Link>
       </div>
     </nav>
   );
 }
+
+export default connect()(Header);

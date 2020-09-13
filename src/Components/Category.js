@@ -1,56 +1,36 @@
 import React, { useState, useEffect } from "react";
 import CourseCard from "./CourseCard";
+import { useSelector } from "react-redux";
+
 import Filter from "./Filter";
 import { FiFilter } from "react-icons/fi";
 import cx from "classnames";
 import "./Category.scss";
+import { connect } from "react-redux";
+import * as actions from "../Redux/actions/course";
 
-export default function Category(props) {
+function Category(props) {
   const category = props.location.param;
-  console.log("param", category);
+
   const [showFilter, setshowFilter] = useState(true);
   let filterClassnames = cx("sectionClass", "otherclass");
-  const [fetchedData, setfetchedData] = useState([]);
+  // const [fetchedData, setfetchedData] = useState([]);
   const [error, seterror] = useState("");
 
+  const fetchedData = useSelector((state) => state.courses.allCourse);
+
   useEffect(() => {
-    const Formbody = {
-      query: `query{
-        getCategory(category: "${category}"){
-          courseName
-          category
-          level
-          description
-          price
-          access
-          certification
-          toLearn
-          requirments
-          duration
-          createdBy
-          date
-        }
-      }`,
-    };
-    const handleFetch = () => {
-      fetch("http://localhost:5000/api/", {
-        method: "POST",
-        body: JSON.stringify(Formbody),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((resdata) => resdata.json())
-        .then((da) => setfetchedData(da.data?.getCategory))
-        .catch((error) => seterror(error));
-    };
-    handleFetch();
+    if (category !== "") props.dispatch(actions.get_course(category));
   }, [category]);
 
   console.log("fetchdata", fetchedData);
   console.log("error", error);
 
+  // let filterData = fetchedData();
+
   return (
     <div className="display">
-      <h4 className="headerName">{category}</h4>
+      <h4 className="headerName">All {category} Courses</h4>
       <div className="dispCat">
         <button className="lft" onClick={() => setshowFilter(!showFilter)}>
           <FiFilter /> Filter
@@ -81,3 +61,5 @@ export default function Category(props) {
     </div>
   );
 }
+
+export default connect()(Category);

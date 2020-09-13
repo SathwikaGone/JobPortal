@@ -10,6 +10,7 @@ export default function Filter() {
   const [openLevel, setopenLevel] = useState(false);
   const [openCost, setopenCost] = useState(false);
 
+  // let handleChecked = () => {};
   return (
     <div>
       <p
@@ -23,7 +24,12 @@ export default function Filter() {
       </p>
       <Collapse in={openVideo}>
         <div id="example-collapse-text">
-          <Checkbox id="small" name="lessthanfive" displayname="0-5 Hours" />
+          <Checkbox
+            id="small"
+            name="lessthanfive"
+            displayname="0-5 Hours"
+            // onChange={(e) => handleChecked(e.target.checked)}
+          />
           <Checkbox id="medium" name="fivetotwenty" displayname="5-20 Hours" />
           <Checkbox id="large" name="tewntyandmore" displayname=">20 Hours" />
         </div>

@@ -3,8 +3,10 @@ import LableInput from "./lableInput";
 import SelectOptions from "./selectOptions";
 import TextArea from "./textArea";
 import "./AddCourse.scss";
+import { connect } from "react-redux";
+import * as actions from "../Redux/actions/course";
 
-export default function AddCourse(props) {
+function AddCourse(props) {
   const [details, setdetails] = useState({
     courseName: "",
     description: "",
@@ -38,41 +40,8 @@ export default function AddCourse(props) {
 
   const handleSubmitData = async (e) => {
     e.preventDefault();
-    console.log("details", details);
-    const body = {
-      query: `mutation{
-    addCourse(Course: {
-      courseName:"${details.courseName}",
-      description:" ${details.description}",
-      category:"${details.category}",
-      level:" ${details.level}",
-      createdBy: "${details.createdBy}",
-      toLearn: "${details.toLearn}",
-      requirments:" ${details.requirments}",
-      access: "${details.access}",
-      certification : "${details.certification}",
-      duration: ${details.duration},
-      price: ${details.price},
-    } ){
-      courseName
-      category
-    }
-  }`,
-    };
-
-    console.log("det", body.toString());
-
-    try {
-      const data = await fetch("http://localhost:5000/api/", {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: { "Content-Type": "application/json" },
-      });
-      console.log("data", data);
-    } catch (error) {
-      console.log(error);
-    }
-
+    props.dispatch(actions.add_course(details));
+    alert("Thank you");
     props.history.push("/");
   };
 
@@ -183,7 +152,4 @@ export default function AddCourse(props) {
   );
 }
 
-// onClick={() => {
-//   console.log("click");
-//  ;
-// }}
+export default connect()(AddCourse);
