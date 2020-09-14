@@ -1,8 +1,8 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import * as Types from "../actions/types";
 import { GetDataFromServer } from "../services/index";
-
-const loginUrl = "http://localhost:5000/api";
+// "http://localhost:5000/api"
+const loginUrl = "https://learningbe.herokuapp.com/api";
 
 function* createCourse(action) {
   try {
