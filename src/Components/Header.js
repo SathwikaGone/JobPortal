@@ -31,61 +31,61 @@ function Header(props) {
         <Dropdown.Menu show={Show}>
           <Link
             className="btn-primaryy "
-            to={{
-              pathname: "/Category",
-              param: "Business",
+            to={{ pathname: "/Category", param: "Business" }}
+            onClick={() => {
+              setShow(!Show);
+              props.dispatch(actions.get_course("Business"));
             }}
-            onClick={() => setShow(!Show)}
           >
             Business
           </Link>
           <Link
             className="btn-primaryy "
-            to={{
-              pathname: "/Category",
-              param: "IT",
+            to={{ pathname: "/Category", param: "IT" }}
+            onClick={() => {
+              setShow(!Show);
+              props.dispatch(actions.get_course("IT"));
             }}
-            onClick={() => setShow(!Show)}
           >
             IT
           </Link>
           <Link
             className="btn-primaryy "
-            to={{
-              pathname: "/Category",
-              param: "Music",
+            to={{ pathname: "/Category", param: "Music" }}
+            onClick={() => {
+              setShow(!Show);
+              props.dispatch(actions.get_course("Music"));
             }}
-            onClick={() => setShow(!Show)}
           >
             Music
           </Link>
           <Link
             className="btn-primaryy "
-            to={{
-              pathname: "/Category",
-              param: "Marketing",
+            to={{ pathname: "/Category", param: "Marketing" }}
+            onClick={() => {
+              setShow(!Show);
+              props.dispatch(actions.get_course("Marketing"));
             }}
-            onClick={() => setShow(!Show)}
           >
             Marketing
           </Link>
           <Link
             className="btn-primaryy "
-            to={{
-              pathname: "/Category",
-              param: "Lifestyle",
+            to={{ pathname: "/Category", param: "Lifestyle" }}
+            onClick={() => {
+              setShow(!Show);
+              props.dispatch(actions.get_course("Lifestyle"));
             }}
-            onClick={() => setShow(!Show)}
           >
             Lifestyle
           </Link>
           <Link
             className="btn-primaryy "
-            to={{
-              pathname: "/Category",
-              param: "Design",
+            to={{ pathname: "/Category", param: "Design" }}
+            onClick={() => {
+              setShow(!Show);
+              props.dispatch(actions.get_course("Design"));
             }}
-            onClick={() => setShow(!Show)}
           >
             Design
           </Link>

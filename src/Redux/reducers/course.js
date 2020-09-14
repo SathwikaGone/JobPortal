@@ -8,7 +8,7 @@ const handleCreateCourse = (state, action) => {
   let newState = { ...state };
   if (action.result !== undefined) {
     newState = Object.assign({}, state, {
-      result: [...action.result.data.addEmployee],
+      result: [...action.result.data.addCourse],
     });
   }
   return { ...newState };
@@ -34,6 +34,15 @@ const handleGetCourseBySearch = (state, action) => {
   return { ...newState };
 };
 
+const handleGetCourseFilter = (state, action) => {
+  let newState = { ...state };
+  if (action.result.data !== undefined) {
+    newState = Object.assign({}, state, {
+      allCourse: [...action.result.data.filterCards],
+    });
+  }
+  return { ...newState };
+};
 export default (state = initialUserObj, action = {}) => {
   switch (action.type) {
     case Type.CREATE_COURSE:
@@ -55,6 +64,13 @@ export default (state = initialUserObj, action = {}) => {
     case Type.GET_COURSE_BY_SEARCH_SERVER_RESPONSE_SUCCESS:
       return handleGetCourseBySearch(state, action);
     case Type.GET_COURSE_BY_SEARCH_SERVER_RESPONSE_ERROR:
+      return { ...state };
+
+    case Type.GET_FILTER_DATA:
+      return { ...state };
+    case Type.GET_FILTER_DATA_SERVER_RESPONSE_SUCCESS:
+      return handleGetCourseFilter(state, action);
+    case Type.GET_FILTER_DATA_SERVER_RESPONSE_ERROR:
       return { ...state };
     default:
       return { ...state };
