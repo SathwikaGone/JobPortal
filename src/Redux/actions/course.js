@@ -20,3 +20,10 @@ export const get_course_by_search = (word) => {
     word,
   };
 };
+
+export const get_course_by_filter = (filter) => {
+  return {
+    type: Types.GET_FILTER_DATA,
+    filter,
+  };
+};

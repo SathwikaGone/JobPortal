@@ -1,32 +1,19 @@
-import React, { useState, useEffect } from "react";
-import CourseCard from "./CourseCard";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import { useSelector } from "react-redux";
-
-import Filter from "./Filter";
 import { FiFilter } from "react-icons/fi";
+
+import CourseCard from "./CourseCard";
+import Filter from "./Filter";
 import cx from "classnames";
 import "./Category.scss";
-import { connect } from "react-redux";
-import * as actions from "../Redux/actions/course";
 
 function Category(props) {
   const category = props.location.param;
-
   const [showFilter, setshowFilter] = useState(true);
-  let filterClassnames = cx("sectionClass", "otherclass");
-  // const [fetchedData, setfetchedData] = useState([]);
-  const [error, seterror] = useState("");
-
   const fetchedData = useSelector((state) => state.courses.allCourse);
-
-  useEffect(() => {
-    if (category !== "") props.dispatch(actions.get_course(category));
-  }, [category]);
-
-  console.log("fetchdata", fetchedData);
-  console.log("error", error);
-
-  // let filterData = fetchedData();
+  let filterClassnames = cx("sectionClass", "otherclass");
+  // console.log("fetchdata", fetchedData);
 
   return (
     <div className="display">
@@ -44,18 +31,21 @@ function Category(props) {
           </aside>
         )}
         <section className={showFilter ? "sectionClass" : filterClassnames}>
-          {fetchedData.length > 0
-            ? fetchedData.map((item) => (
-                <CourseCard
-                  courseName={item.courseName}
-                  shortDescription={item.description}
-                  hours={item.duration}
-                  level={item.level}
-                  author={item.createdBy}
-                  price={item.price}
-                />
-              ))
-            : "No Data :("}
+          {fetchedData.length > 0 ? (
+            fetchedData.map((item, id) => (
+              <CourseCard
+                key={id}
+                courseName={item.courseName}
+                shortDescription={item.description}
+                hours={item.duration}
+                level={item.level}
+                author={item.createdBy}
+                price={item.price}
+              />
+            ))
+          ) : (
+            <h3 style={{ textAlign: "center" }}>No Data :(</h3>
+          )}
         </section>
       </div>
     </div>

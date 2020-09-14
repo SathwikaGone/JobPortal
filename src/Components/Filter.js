@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import Checkbox from "./Checkbox";
-
+import { connect } from "react-redux";
+import * as actions from "../Redux/actions/course";
 import { Collapse } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiOutlineDown } from "react-icons/ai";
 
-export default function Filter() {
+function Filter(props) {
   const [openVideo, setopenVideo] = useState(false);
   const [openLevel, setopenLevel] = useState(false);
   const [openCost, setopenCost] = useState(false);
+  const [Filters, setFilters] = useState([]);
 
-  // let handleChecked = () => {};
+  let handleChecked = (e) => {
+    const options = Filters;
+    let index;
+    if (e.target.checked) {
+      options.push(e.target.name);
+    } else {
+      index = options.indexOf(e.target.name);
+      options.splice(index, 1);
+    }
+    // console.log("Filters", options);
+    setFilters(options);
+  };
+
+  const applyFilter = () => {
+    props.dispatch(actions.get_course_by_filter(Filters));
+  };
   return (
     <div>
       <p
@@ -28,10 +45,20 @@ export default function Filter() {
             id="small"
             name="lessthanfive"
             displayname="0-5 Hours"
-            // onChange={(e) => handleChecked(e.target.checked)}
+            onChange={(e) => handleChecked(e)}
           />
-          <Checkbox id="medium" name="fivetotwenty" displayname="5-20 Hours" />
-          <Checkbox id="large" name="tewntyandmore" displayname=">20 Hours" />
+          <Checkbox
+            id="medium"
+            name="sixtotwenty"
+            displayname="6-20 Hours"
+            onChange={(e) => handleChecked(e)}
+          />
+          <Checkbox
+            id="large"
+            name="tewntyandmore"
+            displayname=">20 Hours"
+            onChange={(e) => handleChecked(e)}
+          />
         </div>
       </Collapse>
 
@@ -46,13 +73,24 @@ export default function Filter() {
       </p>
       <Collapse in={openLevel}>
         <div id="example-collapse-text">
-          <Checkbox id="beginner" name="beginner" displayname="Beginner" />
+          <Checkbox
+            id="beginner"
+            name="Beginner"
+            displayname="Beginner"
+            onChange={(e) => handleChecked(e)}
+          />
           <Checkbox
             id="intermediate"
-            name="intermediate"
+            name="Intermediate"
             displayname="Intermediate"
+            onChange={(e) => handleChecked(e)}
           />
-          <Checkbox id="expert" name="expert" displayname="Expert" />
+          <Checkbox
+            id="expert"
+            name="Expert"
+            displayname="Expert"
+            onChange={(e) => handleChecked(e)}
+          />
         </div>
       </Collapse>
 
@@ -67,10 +105,23 @@ export default function Filter() {
       </p>
       <Collapse in={openCost}>
         <div id="example-collapse-text">
-          <Checkbox id="paid" name="paid" displayname="Paid" />
-          <Checkbox id="free" name="free" displayname="Free" />
+          <Checkbox
+            id="paid"
+            name="paid"
+            displayname="Paid"
+            onChange={(e) => handleChecked(e)}
+          />
+          <Checkbox
+            id="free"
+            name="free"
+            displayname="Free"
+            onChange={(e) => handleChecked(e)}
+          />
         </div>
       </Collapse>
+      <button onClick={applyFilter}>Apply</button>
     </div>
   );
 }
+
+export default connect()(Filter);
