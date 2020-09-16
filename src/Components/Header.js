@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Header.scss";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
 import { connect } from "react-redux";
+import "./Header.scss";
 import * as actions from "../Redux/actions/course";
 
 function Header(props) {
@@ -100,8 +100,8 @@ function Header(props) {
           onChange={(e) => setsearchVal(e.target.value)}
         />
 
-        <Link className="btn-primary " to="/Category">
-          <BsSearch className="icon" onClick={searchData} />
+        <Link className="btn-primary" to="/Category">
+          <BsSearch className="icon" size={18} onClick={searchData} />
         </Link>
       </div>
     </nav>

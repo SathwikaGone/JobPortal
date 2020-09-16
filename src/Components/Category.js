@@ -22,7 +22,7 @@ function Category(props) {
         <button className="lft" onClick={() => setshowFilter(!showFilter)}>
           <FiFilter /> Filter
         </button>
-        <span className="right">results {fetchedData.length} </span>
+        <span className="right">{fetchedData.length} results</span>
       </div>
       <div className="displayCategory">
         {showFilter && (

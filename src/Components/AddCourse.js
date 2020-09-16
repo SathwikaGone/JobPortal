@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import LableInput from "./lableInput";
 import SelectOptions from "./selectOptions";
 import TextArea from "./textArea";
 import "./AddCourse.scss";
-import { connect } from "react-redux";
 import * as actions from "../Redux/actions/course";
 
 function AddCourse(props) {

@@ -2,7 +2,6 @@ import React from "react";
 
 function selectOptions({ displayname, list, onChange, value }) {
   // console.log("select", displayname);
-
   return (
     <label className="displayLable">
       {displayname}

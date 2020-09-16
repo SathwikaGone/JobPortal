@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 import * as actions from "../Redux/actions/course";
 import { Collapse } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AiOutlineDown } from "react-icons/ai";
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+import RadioButton from "./RadioButtion";
 
 function Filter(props) {
-  const [openVideo, setopenVideo] = useState(false);
+  const [openVideo, setopenVideo] = useState(true);
   const [openLevel, setopenLevel] = useState(false);
+  const [openRating, setopenRating] = useState(false);
   const [openCost, setopenCost] = useState(false);
   const [Filters, setFilters] = useState([]);
 
@@ -28,6 +30,7 @@ function Filter(props) {
   const applyFilter = () => {
     props.dispatch(actions.get_course_by_filter(Filters));
   };
+
   return (
     <div>
       <p
@@ -37,7 +40,11 @@ function Filter(props) {
         aria-expanded={openVideo}
       >
         Video Duration
-        <AiOutlineDown size={18} className="moveRight" />
+        {openVideo ? (
+          <AiOutlineUp display="false" size={18} className="moveRight" />
+        ) : (
+          <AiOutlineDown size={18} className="moveRight" />
+        )}
       </p>
       <Collapse in={openVideo}>
         <div id="example-collapse-text">
@@ -56,7 +63,7 @@ function Filter(props) {
           <Checkbox
             id="large"
             name="tewntyandmore"
-            displayname=">20 Hours"
+            displayname="20+ Hours"
             onChange={(e) => handleChecked(e)}
           />
         </div>
@@ -69,7 +76,11 @@ function Filter(props) {
         aria-expanded={openLevel}
       >
         Level
-        <AiOutlineDown size={18} className="moveRight" />
+        {openLevel ? (
+          <AiOutlineUp display="false" size={18} className="moveRight" />
+        ) : (
+          <AiOutlineDown size={18} className="moveRight" />
+        )}
       </p>
       <Collapse in={openLevel}>
         <div id="example-collapse-text">
@@ -101,7 +112,11 @@ function Filter(props) {
         aria-expanded={openCost}
       >
         Price
-        <AiOutlineDown size={18} className="moveRight" />
+        {openCost ? (
+          <AiOutlineUp display="false" size={18} className="moveRight" />
+        ) : (
+          <AiOutlineDown size={18} className="moveRight" />
+        )}{" "}
       </p>
       <Collapse in={openCost}>
         <div id="example-collapse-text">
@@ -119,6 +134,26 @@ function Filter(props) {
           />
         </div>
       </Collapse>
+
+      <p
+        className="makeH5"
+        onClick={() => setopenRating(!openRating)}
+        aria-controls="example-collapse-text"
+        aria-expanded={openRating}
+      >
+        Rating
+        {openRating ? (
+          <AiOutlineUp display="false" size={18} className="moveRight" />
+        ) : (
+          <AiOutlineDown size={18} className="moveRight" />
+        )}{" "}
+      </p>
+      <Collapse in={openRating}>
+        <div id="example-collapse-text">
+          <RadioButton />
+        </div>
+      </Collapse>
+
       <button onClick={applyFilter}>Apply</button>
     </div>
   );
