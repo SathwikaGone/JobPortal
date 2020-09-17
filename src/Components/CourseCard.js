@@ -1,6 +1,7 @@
 import React from "react";
 import "./CourseCard.scss";
 import imgg from "../images/Remotelearning.png";
+
 export default function CourceCard(props) {
   return (
     <div className="cardDisplay">

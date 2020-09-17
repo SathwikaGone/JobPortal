@@ -9,9 +9,6 @@ function App() {
   return (
     <Provider store={store}>
       <Routs />
-      {/** <Home />     
-      <AddCourse />  
-       <Category />*/}
     </Provider>
   );
 }
