@@ -38,5 +38,8 @@
 } */
 
 .position {
-  position: relative;
+  /* position: absolute;
+  bottom: 0; */
+
+  /* padding: 6.4rem 0 4.8rem; */
 }

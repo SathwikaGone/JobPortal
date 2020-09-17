@@ -5,7 +5,7 @@ import AddCourse from "./Components/AddCourse";
 import MyHeader from "./Components/Header";
 import Category from "./Components/Category";
 import Footer from "./Components/AppFooter";
-
+import "./App.css";
 export default function Routes() {
   return (
     <Router>
@@ -19,9 +19,3 @@ export default function Routes() {
     </Router>
   );
 }
-
-// <Route
-// exact
-// path="/AddCourse"
-// render={(props) => <AddCourse {...props} />}
-// />

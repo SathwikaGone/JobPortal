@@ -5,9 +5,18 @@ import "./Home.scss";
 
 export default function Home() {
   return (
-    <div className="HomeDiv">
-      <img src={displayImage} className="displayImage" alt="Display" />
-      <img src={all} className="displayImage" alt="Display" />
+    <div>
+      <div className="HomeDiv">
+        <img src={displayImage} className="displayImage" alt="Display" />
+        <img src={all} className="displayImage" alt="Display" />
+      </div>
+      <div className="cardHome">
+        <h4>Learn on your schedule</h4>
+        <p>
+          Study any topic, anytime. Choose from thousands of expert-led courses
+          now.
+        </p>
+      </div>
     </div>
   );
 }
