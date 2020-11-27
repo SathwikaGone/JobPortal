@@ -1,0 +1,29 @@
+.footerClass {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  bottom: 0;
+
+  .logo {
+    // text-transform: uppercase;
+    margin: 0.5em;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-style: italic;
+  }
+  .logostyle {
+    font-style: italic;
+    font-size: 2em;
+    color: cadetblue;
+  }
+
+  .copyright {
+    padding: 0;
+    height: 100%;
+    top: 50%;
+    color: #73726c;
+  }
+}

@@ -1,0 +1,31 @@
+.displayBlock {
+  display: block;
+
+  .formLayout {
+    align-self: center;
+    width: 50%;
+    height: fit-content;
+    // display: flex;
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    // align-items: center;
+    // justify-content: center;
+    // background-color: cadetblue;
+    margin: 2% auto 0 auto;
+
+    // .buttonRight {
+    //   position: relative;
+
+    .button {
+      position: absolute;
+      right: 0;
+      margin-right: 3em;
+      padding: 10px;
+      font-size: large;
+      border-radius: 7px;
+      background-color: cadetblue;
+      color: white;
+      border-color: cadetblue;
+      // }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.displayBlock {
+  display: block;
+  margin: 1em;
+}
+
+.moveRight {
+  float: right;
+  margin-top: 7px;
+}
+
+.makeH5 {
+  font-weight: bold;
+  border-top: 1px solid #dcdacb;
+  padding: 10px;
+}
+
+.makeH5:last-child {
+  border-bottom: 1px solid #dcdacb;
+}
+
+.displayTextArea {
+  width: 70%;
+}
+
+.displayLable {
+  margin: 1em;
+}
+
+.displaySelect {
+  margin-left: 5px;
+}
+
+.spanWidth {
+  width: 100px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.displayInput {
+  margin: 5px;
+}
+
+.displayInline {
+  display: inline;
+}
+
+.displayrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.radioInput {
+  margin: 10px 10px 30px 10px;
+}
