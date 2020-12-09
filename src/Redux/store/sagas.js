@@ -4,7 +4,7 @@ import { GetDataFromServer } from "../services/index";
 // "http://localhost:5000/api"
 const loginUrl = "https://learningbe.herokuapp.com/api";
 
-function* createCourse(action) {
+export function* createCourse(action) {
   try {
     let details;
     details = action.details;
@@ -30,6 +30,9 @@ function* createCourse(action) {
     };
 
     const response = yield call(GetDataFromServer, loginUrl, "POST", body);
+    // .then((response) => response.json())
+    // .then((data) => (result = data));
+    console.log("response", response);
     const result = yield response.json();
     if (result.error) {
       yield put({
