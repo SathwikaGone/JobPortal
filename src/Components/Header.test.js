@@ -1,10 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Header from "./Header";
-import { findByTestAt } from "../../Utils/index";
+import { findByTestAt, testStore } from "../../Utils/index";
 
-const setUp = (props = {}) => {
-  const component = shallow(<Header {...props} />);
+const setUp = (initialState = {}) => {
+  const store = testStore(initialState);
+  const component = shallow(<Header store={store} />).dive();
   return component;
 };
 
@@ -16,6 +17,7 @@ describe("Header Component ", () => {
 
   it("Should render without errors", () => {
     const wrapper = findByTestAt(component, "nav");
+    console.log("debug", wrapper.get(0));
     expect(wrapper.length).toBe(1);
   });
 

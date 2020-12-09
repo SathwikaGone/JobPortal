@@ -11,7 +11,7 @@ function Header(props) {
   const [Show, setShow] = useState(false);
 
   const searchData = () => {
-    // props.dispatch(actions.get_course_by_search(searchVal));
+    props.dispatch(actions.get_course_by_search(searchVal));
   };
   return (
     <nav id="nav" data-test="nav">
@@ -108,5 +108,5 @@ function Header(props) {
   );
 }
 
-// export default connect()(Header);
-export default Header;
+export default connect()(Header);
+//export default Header;
