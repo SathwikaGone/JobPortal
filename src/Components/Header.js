@@ -10,9 +10,15 @@ function Header(props) {
   const [searchVal, setsearchVal] = useState("");
   const [Show, setShow] = useState(false);
 
-  const searchData = () => {
+  const searchData = (e) => {
     props.dispatch(actions.get_course_by_search(searchVal));
   };
+
+  const dispatchGetCource = (category) => {
+    setShow(!Show);
+    props.dispatch(actions.get_course(category));
+  };
+
   return (
     <nav id="nav" data-test="nav">
       <Link to="/">
@@ -30,62 +36,45 @@ function Header(props) {
         </Dropdown.Toggle>
         <Dropdown.Menu show={Show}>
           <Link
-            className="btn-primaryy "
+            className="btn-primaryy"
+            data-test="business"
             to={{ pathname: "/Category", param: "Business" }}
-            onClick={() => {
-              setShow(!Show);
-              props.dispatch(actions.get_course("Business"));
-            }}
+            onClick={() => dispatchGetCource("Business")}
           >
             Business
           </Link>
           <Link
             className="btn-primaryy "
             to={{ pathname: "/Category", param: "IT" }}
-            onClick={() => {
-              setShow(!Show);
-              props.dispatch(actions.get_course("IT"));
-            }}
+            onClick={() => dispatchGetCource("IT")}
           >
             IT
           </Link>
           <Link
             className="btn-primaryy "
             to={{ pathname: "/Category", param: "Music" }}
-            onClick={() => {
-              setShow(!Show);
-              props.dispatch(actions.get_course("Music"));
-            }}
+            onClick={() => dispatchGetCource("Music")}
           >
             Music
           </Link>
           <Link
             className="btn-primaryy "
             to={{ pathname: "/Category", param: "Marketing" }}
-            onClick={() => {
-              setShow(!Show);
-              props.dispatch(actions.get_course("Marketing"));
-            }}
+            onClick={() => dispatchGetCource("Marketing")}
           >
             Marketing
           </Link>
           <Link
             className="btn-primaryy "
             to={{ pathname: "/Category", param: "Lifestyle" }}
-            onClick={() => {
-              setShow(!Show);
-              props.dispatch(actions.get_course("Lifestyle"));
-            }}
+            onClick={() => dispatchGetCource("Lifestyle")}
           >
             Lifestyle
           </Link>
           <Link
             className="btn-primaryy "
             to={{ pathname: "/Category", param: "Design" }}
-            onClick={() => {
-              setShow(!Show);
-              props.dispatch(actions.get_course("Design"));
-            }}
+            onClick={() => dispatchGetCource("Design")}
           >
             Design
           </Link>
@@ -101,7 +90,12 @@ function Header(props) {
         />
 
         <Link className="btn-primary" to="/Category">
-          <BsSearch className="icon" size={18} onClick={searchData} />
+          <BsSearch
+            className="icon"
+            data-test="search"
+            size={18}
+            onClick={searchData}
+          />
         </Link>
       </div>
     </nav>

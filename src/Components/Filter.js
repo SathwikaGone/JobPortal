@@ -16,6 +16,14 @@ function Filter(props) {
 
   let handleChecked = (e) => {
     const options = Filters;
+    console.log("options", options);
+    console.log(
+      "e.target.checked",
+      e.target.checked,
+      "e.target.name",
+      e.target.name
+    );
+
     let index;
     if (e.target.checked) {
       options.push(e.target.name);
@@ -23,6 +31,8 @@ function Filter(props) {
       index = options.indexOf(e.target.name);
       options.splice(index, 1);
     }
+    console.log(" result options", options);
+
     // console.log("Filters", options);
     setFilters(options);
   };
@@ -50,6 +60,7 @@ function Filter(props) {
         <div id="example-collapse-text">
           <Checkbox
             id="small"
+            data-test="lessthanfive"
             name="lessthanfive"
             displayname="0-5 Hours"
             onChange={(e) => handleChecked(e)}
