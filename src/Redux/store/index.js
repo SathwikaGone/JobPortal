@@ -5,7 +5,7 @@ import reducers from "../reducers/index";
 
 const sagaMiddleware = createSagaMiddleware();
 
-let middleware = [sagaMiddleware];
+export const middleware = [sagaMiddleware];
 
 export const store = createStore(reducers, applyMiddleware(...middleware));
 

@@ -56,7 +56,7 @@ export default (state = initialUserObj, action = {}) => {
       return { ...state };
     case Type.GET_COURSE_DETAILS_SERVER_RESPONSE_SUCCESS:
       return handleGetCourse(state, action);
-    case Type.GET_COURSE_DETAILS_SERVER_RESPONSE_SUCCESS:
+    case Type.GET_COURSE_DETAILS_SERVER_RESPONSE_ERROR:
       return { ...state };
 
     case Type.GET_COURSE_BY_SEARCH:
