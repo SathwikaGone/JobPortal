@@ -2,6 +2,8 @@
 
 eLearning is a simple react based web application. By connecting students all over the world to the best instructors, eLearning is helping individuals reach their goals and pursue their dreams.
 
+View the site at https://learningfe.herokuapp.com/
+
 ### `Home Screen`
 
 ![Screenshot (388)](https://user-images.githubusercontent.com/42945755/103107507-f9d57580-460c-11eb-9c05-49c608f62ec7.png)
