@@ -1,6 +1,13 @@
-.displayImage {
+.displayImage1 {
   width: 50%;
-  animation: fadeIn 5s;
+  animation: fadeInLeft 4s;
+  position: relative;
+}
+
+.displayImage2 {
+  width: 50%;
+  animation: fadeInRight 4s;
+  position: relative;
 }
 .HomeDiv {
   align-items: center;
@@ -18,8 +25,31 @@
   color: white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   border-radius: 7px;
+  animation: card 5s;
 }
-@keyframes fadeIn {
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    left: -50%;
+  }
+  100% {
+    opacity: 1;
+    left: 0%;
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    right: -50%;
+  }
+
+  100% {
+    opacity: 1;
+    right: 0%;
+  }
+}
+
+@keyframes card {
   0% {
     opacity: 0;
   }

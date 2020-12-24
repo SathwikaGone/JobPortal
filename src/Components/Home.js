@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div>
       <div className="HomeDiv">
-        <img src={displayImage} className="displayImage" alt="Display" />
-        <img src={all} className="displayImage" alt="Display" />
+        <img src={displayImage} className="displayImage1" alt="Display IMG" />
+        <img src={all} className="displayImage2" alt="Display IMG" />
       </div>
       <div className="cardHome">
         <h4>Learn on your schedule</h4>
