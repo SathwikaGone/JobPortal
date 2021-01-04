@@ -8,7 +8,7 @@ View the site at https://learningfe.herokuapp.com/
 
 ![Screenshot (388)](https://user-images.githubusercontent.com/42945755/103107507-f9d57580-460c-11eb-9c05-49c608f62ec7.png)
 
-https://user-images.githubusercontent.com/42945755/103107690-ad8b3500-460e-11eb-9327-c894add4c002.mp4
+https://user-images.githubusercontent.com/42945755/103140752-8ee17880-46b8-11eb-8945-def2e9226c06.mp4
 
 ### `Add Course Screen`
 
